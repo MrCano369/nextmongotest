@@ -11,8 +11,8 @@ export default function users({ users }) {
 }
 
 export async function getServerSideProps() {
-  const users = await fetch("http://localhost:3000/api/getUsers").then((res) =>
-    res.json()
-  );
+  const users = await fetch(
+    "https://nextmongotest.vercel.app/api/getUsers"
+  ).then((res) => res.json());
   return { props: { users } };
 }

@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import { connectToDatabase } from '../lib/mongodb'
+import Head from "next/head";
+import Link from "next/link";
+import { connectToDatabase } from "../lib/mongodb";
 
 export default function Home({ isConnected }) {
   return (
@@ -18,7 +19,7 @@ export default function Home({ isConnected }) {
           <h2 className="subtitle">You are connected to MongoDB</h2>
         ) : (
           <h2 className="subtitle">
-            You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
+            You are NOT connected to MongoDB. Check the <code>README.md</code>{" "}
             for instructions.
           </h2>
         )}
@@ -46,15 +47,10 @@ export default function Home({ isConnected }) {
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Link href="/users" className="card">
+            <h3>Users &rarr;</h3>
+            <p>get all usernames from User collection in MongoDB</p>
+          </Link>
         </div>
       </main>
 
@@ -64,7 +60,7 @@ export default function Home({ isConnected }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
@@ -219,15 +215,15 @@ export default function Home({ isConnected }) {
         }
       `}</style>
     </div>
-  )
+  );
 }
 
 export async function getServerSideProps(context) {
-  const { client } = await connectToDatabase()
+  const { client } = await connectToDatabase();
 
-  const isConnected = await client.isConnected()
+  const isConnected = await client.isConnected();
 
   return {
     props: { isConnected },
-  }
+  };
 }
