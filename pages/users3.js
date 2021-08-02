@@ -12,7 +12,7 @@ export default function users({ users }) {
 
 export async function getServerSideProps() {
   const users = await fetch(
-    "https://nextmongo-theta.vercel.app/api/getUsers"
+    "https://nextmongotest.vercel.app/api/getUsers"
   ).then((res) => res.json());
   return { props: { users } };
 }
