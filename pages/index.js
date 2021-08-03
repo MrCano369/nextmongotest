@@ -48,8 +48,7 @@ export default function Home({ isConnected }) {
           </a>
 
           <Link href="/users" className="card">
-            <h3>Users &rarr;</h3>
-            <p>get all usernames from User collection in MongoDB</p>
+            Users
           </Link>
         </div>
       </main>
